@@ -1,0 +1,15 @@
+-------A-------
+good version
+
+A 0.3 100,150,200
+A 1.0 255,255,255
+
+invalid version
+
+A 1.1 255,255,255       ← ratio too high
+A 0.5 256,0,0           ← invalid RGB
+A 0.5 255,255           ← incomplete RGB
+A 0.5 255,255,255,100   ← extra value
+A hello 255,255,255     ← invalid ratio
+-----------------
+

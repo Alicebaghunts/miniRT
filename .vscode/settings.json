@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "minirt.h": "c",
+        "libft.h": "c",
+        "object_types.h": "c",
+        "validation.h": "c"
+    }
+}
