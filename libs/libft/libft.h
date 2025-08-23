@@ -6,7 +6,7 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 14:07:00 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/23 16:59:10 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/23 21:52:06 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_isspace(int c);
 int		ft_atoi(const char *str);
 int		ft_lstsize(t_list *lst);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -81,5 +82,5 @@ char	*new_line(char *line);
 char	*future_next_line(char *line);
 void	ft_get_line(int fd, char **line);
 long	ft_atol(const char *str);
-
+double	ft_atof(const char *s);
 #endif
