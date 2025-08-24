@@ -73,6 +73,9 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 
+norm:
+	@norminette  $(shell find . -name "*.h" ! -path "./libs/minilibx*") source libs/libft 
+
 re: fclean all
 
 .PHONY: all clean fclean re lib mlx

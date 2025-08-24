@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:15 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/24 19:34:17 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/24 20:22:02 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static int	is_valid_cylinder(char **line)
 		return (0);
 	if (!is_valid_direction_vector(line[2]))
 		return (0);
-    if (!is_valid_diameter(line[3]))
+	if (!is_valid_diameter(line[3]))
 		return (0);
-    if (!is_valid_diameter(line[4]))
+	if (!is_valid_diameter(line[4]))
 		return (0);
 	if (!is_valid_rgb_argument(line[5]))
 		return (0);
