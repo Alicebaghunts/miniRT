@@ -1,56 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   file_handler_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 19:34:30 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/24 19:34:31 by alisharu         ###   ########.fr       */
+/*   Created: 2025/08/24 20:05:05 by alisharu          #+#    #+#             */
+/*   Updated: 2025/08/24 20:05:35 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "validation.h"
-
-double	ft_atof(const char *str)
-{
-	double	result;
-	double	sign;
-	double	fraction;
-	double	divisor;
-	int		i;
-
-	result = 0.0;
-	sign = 1.0;
-	fraction = 0.0;
-	divisor = 10.0;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1.0;
-		i++;
-	}
-	while (ft_isdigit(str[i]))
-	{
-		result = result * 10.0 + (str[i] - '0');
-		i++;
-	}
-	if (str[i] == '.')
-	{
-		i++;
-		while (ft_isdigit(str[i]))
-		{
-			fraction += (str[i] - '0') / divisor;
-			divisor *= 10.0;
-			i++;
-		}
-	}
-	return (sign * (result + fraction));
-}
 
 int	checking_argument(char *str)
 {
@@ -76,7 +36,7 @@ int	check_extension(char *path)
 
 void	ft_free_matrix(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!arr)

@@ -7,7 +7,6 @@ OBJ_DIR         = build
 LIB_DIR         = libs
 INC_DIR         = includes
 
-UTILS_DIR       = $(SRC_DIR)/utils
 VALIDATION_DIR  = $(SRC_DIR)/validation
 PARSE_DIR       = $(SRC_DIR)/parse
 GRAPHICS_DIR    = $(SRC_DIR)/graphics
@@ -19,17 +18,17 @@ LIBFT_DIR       = $(LIB_DIR)/libft
 
 SRCS = \
 	$(SRC_DIR)/main.c \
-	$(UTILS_DIR)/map_utils.c \
-	$(UTILS_DIR)/print_utils.c \
-	$(VALIDATION_DIR)/global_functions.c \
 	$(VALIDATION_DIR)/validation.c \
-	$(VALIDATION_DIR)/file_handler.c \
-	$(VALIDATION_DIR)/ambient.c \
-	$(VALIDATION_DIR)/camera.c \
-	$(VALIDATION_DIR)/light.c \
-	$(VALIDATION_DIR)/sphere.c \
-	$(VALIDATION_DIR)/plane.c \
-	$(VALIDATION_DIR)/cylinder.c \
+	$(VALIDATION_DIR)/objects/ambient.c \
+	$(VALIDATION_DIR)/objects/camera.c \
+	$(VALIDATION_DIR)/objects/light.c \
+	$(VALIDATION_DIR)/objects/sphere.c \
+	$(VALIDATION_DIR)/objects/plane.c \
+	$(VALIDATION_DIR)/objects/cylinder.c \
+	$(VALIDATION_DIR)/utils/checking_nums.c \
+	$(VALIDATION_DIR)/utils/checking_object.c \
+	$(VALIDATION_DIR)/utils/file_handler_utils.c \
+	$(VALIDATION_DIR)/utils/file_handler.c \
 
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
