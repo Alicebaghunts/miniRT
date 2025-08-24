@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
+/*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 18:35:51 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/23 19:57:18 by alicebaghun      ###   ########.fr       */
+/*   Created: 2025/08/24 19:34:10 by alisharu          #+#    #+#             */
+/*   Updated: 2025/08/24 19:34:12 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

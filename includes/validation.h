@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
+/*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 18:37:25 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 19:09:29 by alicebaghun      ###   ########.fr       */
+/*   Created: 2025/08/24 19:34:42 by alisharu          #+#    #+#             */
+/*   Updated: 2025/08/24 19:34:45 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	validate_ambient(char **map, char **line);
 void	validate_light(char **map, char **line);
 void	validate_sphere(char **map, char **line);
 void	validate_plane(char **map, char **line);
+void	validate_cylinder(char **map, char **line);
 
 #endif

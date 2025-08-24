@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_types.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
+/*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 18:41:32 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/23 18:43:45 by alicebaghun      ###   ########.fr       */
+/*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
+/*   Updated: 2025/08/24 19:34:49 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

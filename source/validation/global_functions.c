@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
+/*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 15:25:06 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 19:02:12 by alicebaghun      ###   ########.fr       */
+/*   Created: 2025/08/24 19:34:05 by alisharu          #+#    #+#             */
+/*   Updated: 2025/08/24 19:34:07 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
