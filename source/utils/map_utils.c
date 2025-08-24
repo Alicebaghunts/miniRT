@@ -6,12 +6,11 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:18:07 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/23 21:44:09 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 14:59:03 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validation.h"
-#include <ctype.h>
 
 double	ft_atof(const char *str)
 {
@@ -26,7 +25,7 @@ double	ft_atof(const char *str)
 	fraction = 0.0;
 	divisor = 10.0;
 	i = 0;
-	while (isspace(str[i]))
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -34,7 +33,7 @@ double	ft_atof(const char *str)
 			sign = -1.0;
 		i++;
 	}
-	while (isdigit(str[i]))
+	while (ft_isdigit(str[i]))
 	{
 		result = result * 10.0 + (str[i] - '0');
 		i++;
@@ -42,7 +41,7 @@ double	ft_atof(const char *str)
 	if (str[i] == '.')
 	{
 		i++;
-		while (isdigit(str[i]))
+		while (ft_isdigit(str[i]))
 		{
 			fraction += (str[i] - '0') / divisor;
 			divisor *= 10.0;
