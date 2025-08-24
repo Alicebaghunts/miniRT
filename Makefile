@@ -28,6 +28,7 @@ SRCS = \
 	$(VALIDATION_DIR)/camera.c \
 	$(VALIDATION_DIR)/light.c \
 	$(VALIDATION_DIR)/sphere.c \
+	$(VALIDATION_DIR)/plane.c \
 
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))

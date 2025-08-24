@@ -6,7 +6,7 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:37:25 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 18:55:21 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 19:09:29 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	validate_camera(char **map, char **line);
 void	validate_ambient(char **map, char **line);
 void	validate_light(char **map, char **line);
 void	validate_sphere(char **map, char **line);
+void	validate_plane(char **map, char **line);
 
 #endif

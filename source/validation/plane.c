@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 18:31:27 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 19:05:13 by alicebaghun      ###   ########.fr       */
+/*   Created: 2025/08/24 19:04:50 by alicebaghun       #+#    #+#             */
+/*   Updated: 2025/08/24 19:07:19 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validation.h"
 
-static int	is_valid_sphere(char **line)
+static int	is_valid_plane(char **line)
 {
-	if (!line || ft_strcmp(line[0], "sp") != 0)
+	if (!line || ft_strcmp(line[0], "pl") != 0)
 		return (0);
 	if (!line[1] || !line[2] || !line[3] || line[4])
 		return (0);
 	if (!is_valid_position_vector(line[1]))
 		return (0);
-	if (!is_valid_diameter(line[2]))
+	if (!is_valid_position_vector(line[2]))
 		return (0);
 	if (!is_valid_rgb_argument(line[3]))
 		return (0);
 	return (1);
 }
 
-void	validate_sphere(char **map, char **line)
+void	validate_plane(char **map, char **line)
 {
-	if (!is_valid_sphere(line))
+	if (!is_valid_plane(line))
 	{
 		ft_free_matrix(line);
 		ft_free_matrix(map);
