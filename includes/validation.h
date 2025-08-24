@@ -6,7 +6,7 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:37:25 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 17:46:20 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 18:55:21 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	**read_in_map_file(int fd);
 void	error_handling(int num);
 
 // validation
+int		is_valid_diameter(const char *line);
 int		is_valid_float(const char *str);
 int		is_valid_number(char *num_str);
 int		is_valid_fov(char *line);
@@ -40,5 +41,6 @@ void	validate_map_line(char **map, char **line);
 void	validate_camera(char **map, char **line);
 void	validate_ambient(char **map, char **line);
 void	validate_light(char **map, char **line);
+void	validate_sphere(char **map, char **line);
 
 #endif

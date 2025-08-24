@@ -6,7 +6,7 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:33:57 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 17:40:48 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 19:02:43 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,22 @@ void	validate_map_line(char **map, char **line)
 		validate_camera(map, line);
 	else if (ft_strcmp(line[0], "L") == 0)
 		validate_light(map, line);
-    else
-		printf("not A\n");
-	// else if (ft_strcmp(line[0], "sp") == 0)
-	// 	validate_sphere(map, line);
-	// else if (ft_strcmp(line[0], "pl") == 0)
-	// 	validate_plane(map, line);
+	else if (ft_strcmp(line[0], "sp") == 0)
+		validate_sphere(map, line);
+	else if (ft_strcmp(line[0], "pl") == 0)
+		validate_plane(map, line);
 	// else if (ft_strcmp(line[0], "cy") == 0)
 	// 	validate_cylinder(map, line);
-	// else
-	// {
-	// 	ft_putstr_fd("Unknown identifier: ", 2);
-	// 	ft_putstr_fd(line[0], 2);
-	// 	ft_putstr_fd("\n", 2);
-	// 	ft_free_matrix(line);
-	// 	ft_free_matrix(map);
-	// 	error_handling(INVALID_MAP);
-	// }
+	else
+	{
+		// ft_putstr_fd("Unknown identifier: ", 2);
+		// ft_putstr_fd(line[0], 2);
+		// ft_putstr_fd("\n", 2);
+		// ft_free_matrix(line);
+		// ft_free_matrix(map);
+		// error_handling(INVALID_MAP);
+        printf ("aaa\n");
+	}
 }
 
 void	validate_map(char **map)

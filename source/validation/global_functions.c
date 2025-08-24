@@ -6,7 +6,7 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 15:25:06 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 17:50:59 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 19:02:12 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int	is_valid_direction_vector(char *line)
 	i = -1;
 	while (++i < 3)
 	{
-		if (!is_valid_float(dir_vector[i])
-			|| !is_in_range_float(dir_vector[i], -1.0, 1.0))
+		if (!is_valid_float(dir_vector[i]) || !is_in_range_float(dir_vector[i],
+				-1.0, 1.0))
 			return (ft_free_matrix(dir_vector), 0);
 	}
 	ft_free_matrix(dir_vector);
@@ -109,13 +109,38 @@ int	is_valid_fov(char *line)
 {
 	int	i;
 
-	i = -1;
-	while (line[++i])
+	i = 0;
+	if (line[i] == '+')
+		i++;
+	while (line[i])
 	{
 		if (!ft_isdigit(line[i]))
 			return (0);
+		i++;
 	}
 	if (!is_in_range_int(line, 0, 180))
+		return (0);
+	return (1);
+}
+
+int	is_valid_diameter(const char *line)
+{
+	float	val;
+	int		i;
+
+	if (!line)
+		return (0);
+	i = 0;
+	if (line[i] == '+')
+		i++;
+	while (line[i])
+	{
+		if (!ft_isdigit(line[i]) && line[i] != '.')
+			return (0);
+		i++;
+	}
+	val = ft_atof(line);
+	if (val < 0)
 		return (0);
 	return (1);
 }
