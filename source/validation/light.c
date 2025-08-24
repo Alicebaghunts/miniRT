@@ -6,11 +6,11 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:35:45 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 17:41:14 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:53:52 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validation.c"
+#include "validation.h"
 
 static int	is_valid_light(char **line)
 {

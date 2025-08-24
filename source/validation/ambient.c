@@ -6,7 +6,7 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 15:32:57 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 17:41:30 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:53:00 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int	is_valid_ambient(char **line)
 		return (0);
 	if (!line[1] || !line[2] || line[3])
 		return (0);
-	if (!is_valid_float(line[1]) || !is_in_range_float(line[1], 0.0, 1.0))
-		return (0);
+	if (!is_valid_brightness_ratio(line[1]))
+        return (0);
 	if (!is_valid_rgb_argument(line[2]))
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: alicebaghunts <alicebaghunts@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 15:25:06 by alicebaghun       #+#    #+#             */
-/*   Updated: 2025/08/24 17:38:56 by alicebaghun      ###   ########.fr       */
+/*   Updated: 2025/08/24 17:50:59 by alicebaghun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,21 +100,8 @@ int	is_valid_direction_vector(char *line)
 
 int	is_valid_brightness_ratio(char *line)
 {
-	char	**ratio;
-	int		i;
-
-	ratio = ft_split(line, ',');
-	if (!ratio || !ratio[0] || !ratio[1] || !ratio[2]
-		|| ratio[3])
-		return (ft_free_matrix(ratio), 0);
-	i = -1;
-	while (++i < 3)
-	{
-		if (!is_valid_float(ratio[i])
-			|| !is_in_range_float(ratio[i], 0.0, 1.0))
-			return (ft_free_matrix(ratio), 0);
-	}
-	ft_free_matrix(ratio);
+	if (!is_valid_float(line) || !is_in_range_float(line, 0.0, 1.0))
+		return (0);
 	return (1);
 }
 

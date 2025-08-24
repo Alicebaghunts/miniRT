@@ -26,6 +26,7 @@ SRCS = \
 	$(VALIDATION_DIR)/file_handler.c \
 	$(VALIDATION_DIR)/ambient.c \
 	$(VALIDATION_DIR)/camera.c \
+	$(VALIDATION_DIR)/light.c \
 
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
