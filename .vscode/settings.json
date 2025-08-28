@@ -4,7 +4,8 @@
         "libft.h": "c",
         "object_types.h": "c",
         "validation.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "initialization.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

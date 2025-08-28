@@ -6,19 +6,27 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/24 20:20:28 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/28 19:29:29 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_TYPES_H
 # define OBJECT_TYPES_H
 # include "libft.h"
+# include <stdbool.h>
 
 # define INVALID_ARGUMENT 1
 # define INVALID_PATH 2
 # define INVALID_FILE 3
 # define INVALID_MAP 4
 # define MALLOC_ERROR 5
+
+typedef struct s_valid_object
+{
+	bool			camera;
+	bool			light;
+	bool			ambient;
+}					t_valid_object;
 
 typedef struct s_color
 {
@@ -93,7 +101,7 @@ typedef struct s_object
 typedef struct s_scene
 {
 	t_ambient		*ambient;
-	t_camera		*camera;
+	t_list			*camera;
 	t_list			*lights;
 	t_list			*objects;
 }					t_scene;

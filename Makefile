@@ -30,7 +30,6 @@ SRCS = \
 	$(VALIDATION_DIR)/utils/file_handler_utils.c \
 	$(VALIDATION_DIR)/utils/file_handler.c \
 
-
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 CC = cc
