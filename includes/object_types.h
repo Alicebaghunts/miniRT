@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/28 19:29:29 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/28 21:18:21 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ typedef struct s_vector
 typedef struct s_ambient
 {
 	double			light_ratio;
-	t_color			color;
+	t_color			*color;
 }					t_ambient;
 
 typedef struct s_camera
 {
-	t_vector		position;
-	t_vector		direction;
+	t_vector		*position;
+	t_vector		*direction;
 	int				field_of_view;
 }					t_camera;
 

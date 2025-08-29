@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:32 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/24 20:06:02 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/28 21:57:41 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	error_handling(int num)
 
 int	main(int argc, char **argv)
 {
+	t_scene	*scene;
+	t_camera *camera;
+
 	int		fd;
 	char	**map_array;
 
@@ -37,4 +40,13 @@ int	main(int argc, char **argv)
 	fd = check_and_open_map_file(argv[1]);
 	map_array = read_in_map_file(fd);
 	validate_map(map_array);
+	scene = initialize_scene(map_array);
+	camera = scene->camera->content;
+	printf("CAMERA position x-> %f\n", camera->position->x);
+	printf("CAMERA position y-> %f\n", camera->position->y);
+	printf("CAMERA position z-> %f\n", camera->position->z);
+	printf("CAMERA direction x-> %f\n", camera->direction->x);
+	printf("CAMERA direction y-> %f\n", camera->direction->y);
+	printf("CAMERA direction z-> %f\n", camera->direction->z);
+	printf("camera field_of_view -> %d\n", camera->field_of_view);
 }

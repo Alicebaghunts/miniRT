@@ -8,6 +8,7 @@ LIB_DIR         = libs
 INC_DIR         = includes
 
 VALIDATION_DIR  = $(SRC_DIR)/validation
+INITIALIZATION_DIR  = $(SRC_DIR)/initialization
 PARSE_DIR       = $(SRC_DIR)/parse
 GRAPHICS_DIR    = $(SRC_DIR)/graphics
 RAY_TRACING_DIR = $(SRC_DIR)/ray_tracing
@@ -29,11 +30,18 @@ SRCS = \
 	$(VALIDATION_DIR)/utils/checking_object.c \
 	$(VALIDATION_DIR)/utils/file_handler_utils.c \
 	$(VALIDATION_DIR)/utils/file_handler.c \
+	$(INITIALIZATION_DIR)/initialization.c \
+	$(INITIALIZATION_DIR)/objects/init_ambient.c \
+	$(INITIALIZATION_DIR)/objects/init_camera.c \
+	#$(INITIALIZATION_DIR)/objects/init_light.c \
+	#$(INITIALIZATION_DIR)/objects/init_cylinder.c \
+	#$(INITIALIZATION_DIR)/objects/init_plane.c \
+	#$(INITIALIZATION_DIR)/objects/init_sphere.c \
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -DGL_SILENCE_DEPRECATION -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -DGL_SILENCE_DEPRECATION -g3 -fsanitize=address
 
 INCS  = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 LIBS  = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx
