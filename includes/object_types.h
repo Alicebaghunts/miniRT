@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/28 21:18:21 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:10:33 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_vector		position;
+	t_vector		*position;
 	double			brightness_ratio;
-	t_color			color;
+	t_color			*color;
 }					t_light;
 
 typedef struct s_sphere

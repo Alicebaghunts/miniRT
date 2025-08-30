@@ -33,7 +33,7 @@ SRCS = \
 	$(INITIALIZATION_DIR)/initialization.c \
 	$(INITIALIZATION_DIR)/objects/init_ambient.c \
 	$(INITIALIZATION_DIR)/objects/init_camera.c \
-	#$(INITIALIZATION_DIR)/objects/init_light.c \
+	$(INITIALIZATION_DIR)/objects/init_light.c \
 	#$(INITIALIZATION_DIR)/objects/init_cylinder.c \
 	#$(INITIALIZATION_DIR)/objects/init_plane.c \
 	#$(INITIALIZATION_DIR)/objects/init_sphere.c \

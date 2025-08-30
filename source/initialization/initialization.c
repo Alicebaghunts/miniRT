@@ -6,13 +6,25 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:29:37 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/28 20:54:16 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:34:07 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
 
-void	free_scene(t_scene *scene)
+void free_light(void *content)
+{
+	t_light *light = (t_light *)content;
+	if (!light)
+		return ;
+	if (light->position)
+		free(light->position);
+	if (light->color)
+		free(light->color);
+	free(light);
+}
+
+void free_scene(t_scene *scene)
 {
 	if (!scene)
 		return ;
@@ -24,13 +36,12 @@ void	free_scene(t_scene *scene)
 	}
 	if (scene->camera)
 		free(scene->camera);
-	ft_lstclear(&scene->lights, free);
+	ft_lstclear(&scene->lights, free_light);
 	ft_lstclear(&scene->objects, free);
 	free(scene);
-	scene = NULL;
 }
 
-void	free_scene_inits(t_scene *scene, char **line, char **map)
+void free_scene_inits(t_scene *scene, char **line, char **map)
 {
 	if (scene)
 		free_scene(scene);
@@ -54,8 +65,8 @@ void	fill_scene_with_line(t_scene *scene, char **line, char **map)
 		init_ambient(scene, line, map);
 	else if (ft_strcmp(line[0], "C") == 0)
 		init_camera(scene, line, map);
-	// else if (ft_strcmp(line[0], "L") == 0)
-	// 	init_light(sce ne, line, map);
+	else if (ft_strcmp(line[0], "L") == 0)
+		init_light(scene, line, map);
 	// else if (ft_strcmp(line[0], "sp") == 0)
 	// 	init_sphere(scene, line, map);
 	// else if (ft_strcmp(line[0], "pl") == 0)

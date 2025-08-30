@@ -6,13 +6,13 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 21:31:40 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/28 20:49:45 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/29 14:03:24 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
 
-static t_color	*parse_color(char *line)
+t_color	*parse_color(char *line)
 {
 	t_color	*color;
 	char	**matrix_color;
