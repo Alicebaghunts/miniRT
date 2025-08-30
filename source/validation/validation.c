@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:43 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/27 17:59:11 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:51:51 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	validate_map_line(char **map, char **line)
 		error_handling(INVALID_MAP);
 	}
 }
-void minimum_valid_object(t_valid_object *obj, char **split_line)
+
+void	minimum_valid_object(t_valid_object *obj, char **split_line)
 {
 	if (!split_line || !split_line[0])
 		return ;
@@ -49,7 +50,6 @@ void minimum_valid_object(t_valid_object *obj, char **split_line)
 	else if (ft_strcmp(split_line[0], "L") == 0)
 		obj->light = true;
 }
-
 
 void	check_minimum_valid_object(t_valid_object obj, char **map)
 {

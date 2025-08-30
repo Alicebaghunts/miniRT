@@ -6,15 +6,17 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:29:37 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/30 10:34:07 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/30 10:52:37 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
 
-void free_light(void *content)
+void	free_light(void *content)
 {
-	t_light *light = (t_light *)content;
+	t_light	*light;
+
+	light = (t_light *)content;
 	if (!light)
 		return ;
 	if (light->position)
@@ -24,7 +26,7 @@ void free_light(void *content)
 	free(light);
 }
 
-void free_scene(t_scene *scene)
+void	free_scene(t_scene *scene)
 {
 	if (!scene)
 		return ;
@@ -41,7 +43,7 @@ void free_scene(t_scene *scene)
 	free(scene);
 }
 
-void free_scene_inits(t_scene *scene, char **line, char **map)
+void	free_scene_inits(t_scene *scene, char **line, char **map)
 {
 	if (scene)
 		free_scene(scene);
