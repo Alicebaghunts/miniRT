@@ -6,58 +6,11 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:29:37 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/30 10:52:37 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/31 22:52:51 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
-
-void	free_light(void *content)
-{
-	t_light	*light;
-
-	light = (t_light *)content;
-	if (!light)
-		return ;
-	if (light->position)
-		free(light->position);
-	if (light->color)
-		free(light->color);
-	free(light);
-}
-
-void	free_scene(t_scene *scene)
-{
-	if (!scene)
-		return ;
-	if (scene->ambient)
-	{
-		if (scene->ambient->color)
-			free(scene->ambient->color);
-		free(scene->ambient);
-	}
-	if (scene->camera)
-		free(scene->camera);
-	ft_lstclear(&scene->lights, free_light);
-	ft_lstclear(&scene->objects, free);
-	free(scene);
-}
-
-void	free_scene_inits(t_scene *scene, char **line, char **map)
-{
-	if (scene)
-		free_scene(scene);
-	if (line)
-	{
-		ft_free_matrix(line);
-		line = NULL;
-	}
-	if (map)
-	{
-		ft_free_matrix(map);
-		map = NULL;
-	}
-}
 
 void	fill_scene_with_line(t_scene *scene, char **line, char **map)
 {

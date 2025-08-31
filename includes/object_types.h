@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/30 10:10:33 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/08/31 22:42:26 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,38 +64,38 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	t_vector		position;
+	t_vector		*position;
 	double			diameter;
-	t_color			color;
+	t_color			*color;
 }					t_sphere;
 
 typedef struct s_plane
 {
-	t_vector		position;
-	t_vector		normal;
-	t_color			color;
+	t_vector		*position;
+	t_vector		*normal;
+	t_color			*color;
 }					t_plane;
 
 typedef struct s_cylinder
 {
-	t_vector		position;
-	t_vector		direction;
+	t_vector		*position;
+	t_vector		*direction;
+	t_color			*color;
 	double			diameter;
 	double			height;
-	t_color			color;
 }					t_cylinder;
 
 typedef union u_object_data
 {
-	t_sphere		sphere;
-	t_plane			plane;
-	t_cylinder		cylinder;
+	t_sphere		*sphere;
+	t_plane			*plane;
+	t_cylinder		*cylinder;
 }					t_object_data;
 
 typedef struct s_object
 {
 	char			type;
-	t_object_data	data;
+	t_object_data	*data;
 }					t_object;
 
 typedef struct s_scene
