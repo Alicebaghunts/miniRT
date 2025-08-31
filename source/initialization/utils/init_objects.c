@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 22:53:28 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/31 23:45:14 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 00:35:29 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int	cmp_types_and_init(char **line, t_object *object)
 {
-	// if (ft_strncmp(line[0], "sp", 2) == 0)
-	// {
-	// 	object->type = 's';
-	// 	object->data->sphere = init_sphere(line);
-	// 	if (object->data->sphere == NULL)
-	// 		return (1);
-	// }
-	// else if (ft_strncmp(line[0], "pl", 2) == 0)
-	// {
-	// 	object->type = 'p';
-	// 	object->data->plane = init_plane(line);
-	// 	if (object->data->plane == NULL)
-	// 		return (1);
-	// }
-	if (ft_strncmp(line[0], "cy", 2) == 0)
+	if (ft_strncmp(line[0], "sp", 2) == 0)
+	{
+		object->type = 's';
+		object->data->sphere = init_sphere(line);
+		if (object->data->sphere == NULL)
+			return (1);
+	}
+	else if (ft_strncmp(line[0], "pl", 2) == 0)
+	{
+		object->type = 'p';
+		object->data->plane = init_plane(line);
+		if (object->data->plane == NULL)
+			return (1);
+	}
+	else if (ft_strncmp(line[0], "cy", 2) == 0)
 	{
 		object->type = 'c';
 		object->data->cylinder = init_cylinder(line);

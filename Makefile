@@ -34,11 +34,11 @@ SRCS = \
 	$(INITIALIZATION_DIR)/objects/init_ambient.c \
 	$(INITIALIZATION_DIR)/objects/init_camera.c \
 	$(INITIALIZATION_DIR)/objects/init_light.c \
+	$(INITIALIZATION_DIR)/objects/init_cylinder.c \
+	$(INITIALIZATION_DIR)/objects/init_plane.c \
 	$(INITIALIZATION_DIR)/utils/free_scene.c \
 	$(INITIALIZATION_DIR)/utils/free_objects.c \
 	$(INITIALIZATION_DIR)/utils/init_objects.c \
-	$(INITIALIZATION_DIR)/objects/init_cylinder.c \
-	#$(INITIALIZATION_DIR)/objects/init_plane.c \
 	#$(INITIALIZATION_DIR)/objects/init_sphere.c \
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
