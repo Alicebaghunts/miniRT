@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 00:34:49 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 00:34:50 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 00:39:57 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_plane	*init_plane(char **line)
 		return (NULL);
 	pos = ft_split(line[1], ',');
 	norm = ft_split(line[2], ',');
-	col = ft_split(line[5], ',');
+	col = ft_split(line[3], ',');
 	if (!fill_plane_vectors(plane, pos, norm, col))
 		return (ft_free_matrix(pos), ft_free_matrix(norm), ft_free_matrix(col),
 			free(plane), NULL);

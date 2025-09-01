@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:42 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/28 20:38:31 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 09:36:17 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	validate_cylinder(char **map, char **line);
 
 // initalization
 t_scene	*initialize_scene(char **map);
-
+void	print_scene(t_scene *scene);
 #endif

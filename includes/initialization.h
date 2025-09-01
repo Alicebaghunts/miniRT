@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:30:19 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 00:14:27 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 00:38:34 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		init_light(t_scene *scene, char **line, char **map);
 
 t_cylinder	*init_cylinder(char **line);
 t_plane		*init_plane(char **line);
-// void	init_sphere(t_scene *scene, char **line, char **map);
+t_sphere	*init_sphere(char **line);
 // void	initialize_scene(t_scene *scene, char **map);
 
 //

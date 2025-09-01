@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:29:37 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/31 22:52:51 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 09:30:17 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ void	fill_scene_with_line(t_scene *scene, char **line, char **map)
 		init_camera(scene, line, map);
 	else if (ft_strcmp(line[0], "L") == 0)
 		init_light(scene, line, map);
-	// else if (ft_strcmp(line[0], "sp") == 0)
-	// 	init_sphere(scene, line, map);
-	// else if (ft_strcmp(line[0], "pl") == 0)
-	// 	init_plane(scene, line, map);
-	// else if (ft_strcmp(line[0], "cy") == 0)
-	// 	init_cylinder(scene, line, map);
+	else if (ft_strcmp(line[0], "sp") == 0 || ft_strcmp(line[0], "pl") == 0
+		|| ft_strcmp(line[0], "cy") == 0)
+		init_objects(scene, line, map);
 }
 
 t_scene	*initialize_scene(char **map)

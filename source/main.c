@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:32 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/30 10:55:03 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 09:37:22 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ void	error_handling(int num)
 		ft_putstr_fd("Error: Failed to malloc\n", 2);
 	exit(num);
 }
+
 int	main(int argc, char **argv)
 {
 	t_scene	*scene;
-	t_list	*node;
-	t_light	*light;
 	int		fd;
 	char	**map_array;
 
@@ -40,18 +39,5 @@ int	main(int argc, char **argv)
 	map_array = read_in_map_file(fd);
 	validate_map(map_array);
 	scene = initialize_scene(map_array);
-	node = scene->lights;
-	while (node)
-	{
-		light = node->content;
-		printf("light position x-> %f\n", light->position->x);
-		printf("light position y-> %f\n", light->position->y);
-		printf("light position z-> %f\n", light->position->z);
-		printf("light color red-> %d\n", light->color->red);
-		printf("light color green-> %d\n", light->color->green);
-		printf("light color blue-> %d\n", light->color->blue);
-		printf("light ratio -> %f\n", light->brightness_ratio);
-		printf("----------\n");
-		node = node->next;
-	}
+	print_scene(scene);
 }

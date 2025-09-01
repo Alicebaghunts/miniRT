@@ -5,21 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 22:52:23 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/31 23:41:49 by alisharu         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "initialization.h"
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   free_objects.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 22:52:23 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/31 23:45:12 by alisharu         ###   ########.fr       */
+/*   Created: 2025/09/01 09:31:40 by alisharu          #+#    #+#             */
+/*   Updated: 2025/09/01 09:32:56 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +65,18 @@ void	free_light(void *content)
 
 void	free_object(void *content)
 {
-	t_object	*object;
+	t_object *object;
 
 	object = (t_object *)content;
 	if (!object)
 		return ;
 	if (object->data)
 	{
-		if (object->type == 'c' && object->data->cylinder)
+		if (object->type == 'c')
 			free_cylinder(object->data->cylinder);
-		else if (object->type == 's' && object->data->sphere)
+		else if (object->type == 's')
 			free_sphere(object->data->sphere);
-		else if (object->type == 'p' && object->data->plane)
+		else if (object->type == 'p')
 			free_plane(object->data->plane);
 		free(object->data);
 	}

@@ -30,6 +30,7 @@ SRCS = \
 	$(VALIDATION_DIR)/utils/checking_object.c \
 	$(VALIDATION_DIR)/utils/file_handler_utils.c \
 	$(VALIDATION_DIR)/utils/file_handler.c \
+	$(VALIDATION_DIR)/utils/print_scene.c \
 	$(INITIALIZATION_DIR)/initialization.c \
 	$(INITIALIZATION_DIR)/objects/init_ambient.c \
 	$(INITIALIZATION_DIR)/objects/init_camera.c \
@@ -39,7 +40,7 @@ SRCS = \
 	$(INITIALIZATION_DIR)/utils/free_scene.c \
 	$(INITIALIZATION_DIR)/utils/free_objects.c \
 	$(INITIALIZATION_DIR)/utils/init_objects.c \
-	#$(INITIALIZATION_DIR)/objects/init_sphere.c \
+	$(INITIALIZATION_DIR)/objects/init_sphere.c \
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
