@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:32 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 16:10:17 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 18:10:54 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	main(int argc, char **argv)
 	win = mlx_new_window(mlx, 800, 600, "miniRT");
 	if (!win)
 		return (free(mlx), 1);
+	drawing(win, scene);
 	mlx_loop(mlx);
 }

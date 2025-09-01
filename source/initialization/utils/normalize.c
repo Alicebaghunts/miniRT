@@ -6,11 +6,16 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:23:03 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 16:13:22 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 20:13:22 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
+
+double	vector_length(t_vector vector)
+{
+	return (sqrt(vector.x * vector.x + vector.y * vector.y + vector.z * vector.z));
+}
 
 void	normalize_vectors(t_scene *scene)
 {
