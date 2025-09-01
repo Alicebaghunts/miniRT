@@ -40,6 +40,7 @@ SRCS = \
 	$(INITIALIZATION_DIR)/utils/free_scene.c \
 	$(INITIALIZATION_DIR)/utils/free_objects.c \
 	$(INITIALIZATION_DIR)/utils/init_objects.c \
+	$(INITIALIZATION_DIR)/utils/normalize.c \
 	$(INITIALIZATION_DIR)/objects/init_sphere.c \
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))

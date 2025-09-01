@@ -5,7 +5,8 @@
         "object_types.h": "c",
         "validation.h": "c",
         "stdio.h": "c",
-        "initialization.h": "c"
+        "initialization.h": "c",
+        "mlx.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

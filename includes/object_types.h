@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/31 22:42:26 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:59:33 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OBJECT_TYPES_H
 # include "libft.h"
 # include <stdbool.h>
+# include <math.h>
 
 # define INVALID_ARGUMENT 1
 # define INVALID_PATH 2

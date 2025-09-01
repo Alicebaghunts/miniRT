@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:30:19 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 00:38:34 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 15:55:57 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_color		*parse_color(char *line);
 t_vector	*init_vector(char *line);
 
 // utils
-
+void		normalize_vectors(t_scene *scene);
+t_vector	normalize(t_vector vector);
 void		free_scene(t_scene *scene);
 void		free_light(void *content);
 void		free_object(void *content);

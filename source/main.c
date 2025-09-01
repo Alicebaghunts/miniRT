@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:32 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 09:37:22 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:03:19 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ void	error_handling(int num)
 
 int	main(int argc, char **argv)
 {
-	t_scene	*scene;
-	int		fd;
-	char	**map_array;
+	t_scene *scene;
+	char **map_array;
+	int fd;
+	// void *mlx;
+	// void *win;
 
 	if (argc != 2)
 		error_handling(INVALID_ARGUMENT);
@@ -39,5 +41,15 @@ int	main(int argc, char **argv)
 	map_array = read_in_map_file(fd);
 	validate_map(map_array);
 	scene = initialize_scene(map_array);
+	print_scene(scene);
+	printf("------------------------------------------\n");
+	normalize_vectors(scene);
+	// mlx = mlx_init();
+	// if (!mlx)
+	// 	return (1);
+	// win = mlx_new_window(mlx, 800, 600, "miniRT");
+	// if (!win)
+	// 	return (free(mlx), 1);
+	// mlx_loop(mlx);
 	print_scene(scene);
 }
