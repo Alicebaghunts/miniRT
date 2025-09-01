@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:34:42 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 10:01:20 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:07:40 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,31 +91,32 @@ static void	print_object(t_object *obj, int i)
 
 void	print_scene(t_scene *scene)
 {
+	int		i;
+	t_list	*cam;
+	t_list	*l;
+	t_list	*o;
+
 	if (!scene)
 		return ;
-
 	print_ambient(scene->ambient);
-
-	int i = 1;
-	t_list *cam = scene->camera;
+	i = 1;
+	cam = scene->camera;
 	while (cam)
 	{
 		print_camera((t_camera *)cam->content, i);
 		cam = cam->next;
 		i++;
 	}
-
 	i = 1;
-	t_list *l = scene->lights;
+	l = scene->lights;
 	while (l)
 	{
 		print_light((t_light *)l->content, i);
 		l = l->next;
 		i++;
 	}
-
 	i = 1;
-	t_list *o = scene->objects;
+	o = scene->objects;
 	while (o)
 	{
 		print_object((t_object *)o->content, i);

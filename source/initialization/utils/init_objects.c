@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 22:53:28 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 00:35:29 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:12:53 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	cmp_types_and_init(char **line, t_object *object)
 		if (object->data->cylinder == NULL)
 			return (1);
 	}
-    return (0);
+	return (0);
 }
 
 void	init_objects(t_scene *scene, char **line, char **map)
@@ -56,13 +56,13 @@ void	init_objects(t_scene *scene, char **line, char **map)
 		free_scene_inits(scene, line, map);
 		error_handling(MALLOC_ERROR);
 	}
-    if (cmp_types_and_init(line, object) == 1)
-    {
-        free(object->data);
+	if (cmp_types_and_init(line, object) == 1)
+	{
+		free(object->data);
 		free(object);
 		free_scene_inits(scene, line, map);
 		error_handling(MALLOC_ERROR);
-    }
+	}
 	node = ft_lstnew(object);
 	if (!node)
 	{

@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:31:40 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 09:32:56 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:11:15 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	free_light(void *content)
 
 void	free_object(void *content)
 {
-	t_object *object;
+	t_object	*object;
 
 	object = (t_object *)content;
 	if (!object)

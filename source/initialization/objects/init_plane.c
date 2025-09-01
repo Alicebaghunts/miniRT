@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 00:34:49 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 00:39:57 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:08:44 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	fill_plane_vectors(t_plane *plane, char **pos, char **norm,
 	if (!pos || !norm || !col)
 		return (0);
 	plane->position = ft_calloc(1, sizeof(t_vector));
-    if (!plane->position)
-        return (0);
+	if (!plane->position)
+		return (0);
 	plane->normal = ft_calloc(1, sizeof(t_vector));
-    if (!plane->normal)
+	if (!plane->normal)
 		return (free(plane->position), 0);
 	plane->color = ft_calloc(1, sizeof(t_color));
 	if (!plane->color)

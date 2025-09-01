@@ -6,42 +6,44 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:23:03 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 16:01:33 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:13:22 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
 
-void normalize_vectors(t_scene *scene)
+void	normalize_vectors(t_scene *scene)
 {
-    t_list      *node;
-    t_object    *objects;
+	t_list		*node;
+	t_object	*objects;
 
-    if (!scene)
-        return ;
-    node = scene->camera;
-    while (node)
-    {
-        if (node->content && ((t_camera *)node->content)->direction)
-            *((t_camera *)node->content)->direction = 
-                normalize(*((t_camera *)node->content)->direction);
-        node = node->next;
-    }
-    node = scene->objects;
-    while (node)
-    {
-        objects = (t_object *)node->content;
-        if (objects)
-        {
-            if (objects->type == 'p' && objects->data->plane && objects->data->plane->normal)
-                *objects->data->plane->normal = normalize(*objects->data->plane->normal);
-            else if (objects->type == 'c' && objects->data->cylinder &&
-                objects->data->cylinder->direction)
-                *objects->data->cylinder->direction = normalize(
-                    *objects->data->cylinder->direction);
-        }
-        node = node->next;
-    }
+	if (!scene)
+		return ;
+	node = scene->camera;
+	while (node)
+	{
+		if (node->content && ((t_camera *)node->content)->direction)
+			*((t_camera *)node->content)->direction
+				= normalize(*((t_camera *)node->content)->direction);
+		node = node->next;
+	}
+	node = scene->objects;
+	while (node)
+	{
+		objects = (t_object *)node->content;
+		if (objects)
+		{
+			if (objects->type == 'p' && objects->data->plane
+				&& objects->data->plane->normal)
+				*objects->data->plane->normal
+					= normalize(*objects->data->plane->normal);
+			else if (objects->type == 'c' && objects->data->cylinder
+				&& objects->data->cylinder->direction)
+				*objects->data->cylinder->direction
+					= normalize(*objects->data->cylinder->direction);
+		}
+		node = node->next;
+	}
 }
 
 t_vector	normalize(t_vector vector)

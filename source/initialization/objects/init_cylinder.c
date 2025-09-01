@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 21:31:59 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/31 23:24:26 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:10:45 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	fill_cylinder_vectors(t_cylinder *cylinder, char **pos, char **dir,
 	if (!pos || !dir || !col)
 		return (0);
 	cylinder->position = ft_calloc(1, sizeof(t_vector));
-    if (!cylinder->position)
-        return (0);
+	if (!cylinder->position)
+		return (0);
 	cylinder->direction = ft_calloc(1, sizeof(t_vector));
-    if (!cylinder->direction)
+	if (!cylinder->direction)
 		return (free(cylinder->position), 0);
 	cylinder->color = ft_calloc(1, sizeof(t_color));
 	if (!cylinder->color)
