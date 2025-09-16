@@ -42,6 +42,13 @@ SRCS = \
 	$(INITIALIZATION_DIR)/utils/init_objects.c \
 	$(INITIALIZATION_DIR)/utils/normalize.c \
 	$(INITIALIZATION_DIR)/objects/init_sphere.c \
+	$(VECTOR_DIR)/formulas.c \
+	$(VECTOR_DIR)/cylinder.c \
+	$(VECTOR_DIR)/plane.c \
+	$(VECTOR_DIR)/vector_formula.c \
+	$(RAY_TRACING_DIR)/shade.c \
+	$(RAY_TRACING_DIR)/drawing.c \
+	$(RAY_TRACING_DIR)/intersect.c \
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 

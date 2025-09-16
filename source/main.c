@@ -6,11 +6,11 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:32 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 18:10:54 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:20:31 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validation.h"
+#include "rendering.h"
 
 void	error_handling(int num)
 {
@@ -27,13 +27,35 @@ void	error_handling(int num)
 	exit(num);
 }
 
+t_mlx	*mlx_init_scene(t_scene *scene, int width, int height, char *title)
+{
+	t_mlx	*mlx_struct;
+
+	mlx_struct = malloc(sizeof(t_mlx));
+	if (!mlx_struct)
+		return (NULL);
+	mlx_struct->mlx = mlx_init();
+	if (!mlx_struct->mlx)
+	{
+		free(mlx_struct);
+		return (NULL);
+	}
+	mlx_struct->window = mlx_new_window(mlx_struct->mlx, width, height, title);
+	if (!mlx_struct->window)
+	{
+		free(mlx_struct->mlx);
+		free(mlx_struct);
+		return (NULL);
+	}
+	mlx_struct->scene = scene;
+	return (mlx_struct);
+}
 int	main(int argc, char **argv)
 {
 	t_scene	*scene;
 	char	**map_array;
 	int		fd;
-	void	*mlx;
-	void	*win;
+	t_mlx	*app;
 
 	if (argc != 2)
 		error_handling(INVALID_ARGUMENT);
@@ -42,12 +64,11 @@ int	main(int argc, char **argv)
 	validate_map(map_array);
 	scene = initialize_scene(map_array);
 	normalize_vectors(scene);
-	mlx = mlx_init();
-	if (!mlx)
+
+	app = mlx_init_scene(scene, MLX_X, MLX_Y, "miniRT");
+	if (!app)
 		return (1);
-	win = mlx_new_window(mlx, 800, 600, "miniRT");
-	if (!win)
-		return (free(mlx), 1);
-	drawing(win, scene);
-	mlx_loop(mlx);
+
+	drawing(app);
+	mlx_loop(app->mlx);
 }

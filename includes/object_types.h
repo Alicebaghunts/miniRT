@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 15:59:33 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/02 16:34:10 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define INVALID_FILE 3
 # define INVALID_MAP 4
 # define MALLOC_ERROR 5
+
+# define MLX_X 800 
+# define MLX_Y 600
 
 typedef struct s_valid_object
 {

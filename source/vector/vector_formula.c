@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 18:31:04 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 20:15:58 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/02 19:22:46 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vector	vector_addition(t_vector a, t_vector b)
 	return (res);
 }
 
-t_vector	vec_sub(t_vector a, t_vector b)
+t_vector	vector_sub(t_vector a, t_vector b)
 {
 	t_vector	res;
 
@@ -32,12 +32,12 @@ t_vector	vec_sub(t_vector a, t_vector b)
 	return (res);
 }
 
-double	vec_dot(t_vector a, t_vector b)
+double	vector_dot(t_vector a, t_vector b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
-t_vector	vec_cross(t_vector a, t_vector b)
+t_vector	vector_cross(t_vector a, t_vector b)
 {
 	t_vector	res;
 
@@ -47,7 +47,7 @@ t_vector	vec_cross(t_vector a, t_vector b)
 	return (res);
 }
 
-t_vector	vec_scale(t_vector v, double s)
+t_vector	vector_scale(t_vector v, double s)
 {
 	t_vector	res;
 
