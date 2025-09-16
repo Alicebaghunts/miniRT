@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:32 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 16:20:31 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:41:42 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_mlx	*mlx_init_scene(t_scene *scene, int width, int height, char *title)
 	mlx_struct->scene = scene;
 	return (mlx_struct);
 }
+
 int	main(int argc, char **argv)
 {
 	t_scene	*scene;
@@ -64,11 +65,9 @@ int	main(int argc, char **argv)
 	validate_map(map_array);
 	scene = initialize_scene(map_array);
 	normalize_vectors(scene);
-
 	app = mlx_init_scene(scene, MLX_X, MLX_Y, "miniRT");
 	if (!app)
 		return (1);
-
 	drawing(app);
 	mlx_loop(app->mlx);
 }

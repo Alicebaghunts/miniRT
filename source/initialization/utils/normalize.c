@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:23:03 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 16:09:23 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:47:47 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,47 @@ double	vector_length(t_vector vector)
 			* vector.z));
 }
 
+static void	normalize_camera_direction(t_camera *camera)
+{
+	if (camera && camera->direction)
+		*camera->direction = normalize(*camera->direction);
+}
+
+static void	normalize_object_direction(t_object *object)
+{
+	if (object)
+	{
+		if (object->type == 'p' && object->data->plane
+			&& object->data->plane->normal)
+			*object->data->plane->normal
+				= normalize(*object->data->plane->normal);
+		else if (object->type == 'c' && object->data->cylinder
+			&& object->data->cylinder->direction)
+			*object->data->cylinder->direction
+				= normalize(*object->data->cylinder->direction);
+	}
+}
+
 void	normalize_vectors(t_scene *scene)
 {
 	t_list		*node;
-	t_object	*objects;
+	t_camera	*camera;
+	t_object	*object;
 
 	if (!scene)
 		return ;
 	node = scene->camera;
 	while (node)
 	{
-		if (node->content && ((t_camera *)node->content)->direction)
-			*((t_camera *)node->content)->direction
-				= normalize(*((t_camera *)node->content)->direction);
+		camera = (t_camera *)node->content;
+		normalize_camera_direction(camera);
 		node = node->next;
 	}
 	node = scene->objects;
 	while (node)
 	{
-		objects = (t_object *)node->content;
-		if (objects)
-		{
-			if (objects->type == 'p' && objects->data->plane
-				&& objects->data->plane->normal)
-				*objects->data->plane->normal = normalize(*objects->data->plane->normal);
-			else if (objects->type == 'c' && objects->data->cylinder
-				&& objects->data->cylinder->direction)
-				*objects->data->cylinder->direction
-					= normalize(*objects->data->cylinder->direction);
-		}
+		object = (t_object *)node->content;
+		normalize_object_direction(object);
 		node = node->next;
 	}
 }

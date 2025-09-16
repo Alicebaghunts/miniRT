@@ -6,11 +6,40 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 19:50:25 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 15:38:12 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/16 21:15:43 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rendering.h"
+
+double	intersect_cylinder_shadow(t_vector origin, t_vector dir,
+		t_cylinder *cylinder)
+{
+	t_vector	oc;
+	double		radius;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		t1;
+	double		t2;
+
+	oc = vector_sub(origin, *(cylinder->position));
+	radius = cylinder->diameter / 2.0;
+	a = dir.x * dir.x + dir.y * dir.y;
+	b = 2.0 * (oc.x * dir.x + oc.y * dir.y);
+	c = oc.x * oc.x + oc.y * oc.y - radius * radius;
+	discriminant = b * b - 4.0 * a * c;
+	if (discriminant < 0)
+		return (-1.0);
+	t1 = (-b - sqrt(discriminant)) / (2.0 * a);
+	t2 = (-b + sqrt(discriminant)) / (2.0 * a);
+	if (t1 > 1e-6)
+		return (t1);
+	if (t2 > 1e-6)
+		return (t2);
+	return (-1.0);
+}
 
 static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector light_dir,
 		double light_dist)
@@ -19,6 +48,7 @@ static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector light_dir,
 	t_object	*obj;
 	double		t;
 
+	light_dir = normalize(light_dir);
 	node = scene->objects;
 	while (node)
 	{
@@ -28,7 +58,7 @@ static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector light_dir,
 			t = intersect_sphere_shadow(hit_point, light_dir,
 					obj->data->sphere);
 			if (t > 1e-6 && t < light_dist)
-				return (1); // в тени
+				return (1);
 		}
 		else if (obj->type == 'p')
 		{
@@ -36,10 +66,16 @@ static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector light_dir,
 			if (t > 1e-6 && t < light_dist)
 				return (1);
 		}
-		// TODO: cylinder shadows
+		else if (obj->type == 'c')
+		{
+			t = intersect_cylinder_shadow(hit_point, light_dir,
+					obj->data->cylinder);
+			if (t > 1e-6 && t < light_dist)
+				return (1);
+		}
 		node = node->next;
 	}
-	return (0); // света ничто не перекрыло
+	return (0);
 }
 
 t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,

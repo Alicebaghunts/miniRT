@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 21:31:55 by alisharu          #+#    #+#             */
-/*   Updated: 2025/08/30 10:52:04 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:44:28 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,47 @@ t_vector	*init_vector(char *line)
 	return (vector);
 }
 
-void	init_camera(t_scene *scene, char **line, char **map)
+static t_camera	*create_camera(char **line)
 {
-	t_list		*node;
 	t_camera	*camera;
 
 	camera = ft_calloc(1, sizeof(t_camera));
 	if (!camera)
-	{
-		free_scene_inits(scene, line, map);
-		error_handling(MALLOC_ERROR);
-	}
+		return (NULL);
 	camera->position = init_vector(line[1]);
 	camera->direction = init_vector(line[2]);
 	camera->field_of_view = ft_atoi(line[3]);
 	if (!camera->position || !camera->direction)
 	{
 		free(camera);
-		free_scene_inits(scene, line, map);
-		error_handling(MALLOC_ERROR);
+		return (NULL);
 	}
+	return (camera);
+}
+
+static void	add_camera_to_scene(t_scene *scene, t_camera *camera)
+{
+	t_list	*node;
+
 	node = ft_lstnew(camera);
 	if (!node)
 	{
 		free(camera);
-		free_scene_inits(scene, line, map);
+		free_scene_inits(scene, NULL, NULL);
 		error_handling(MALLOC_ERROR);
 	}
 	ft_lstadd_back(&scene->camera, node);
+}
+
+void	init_camera(t_scene *scene, char **line, char **map)
+{
+	t_camera	*camera;
+
+	camera = create_camera(line);
+	if (!camera)
+	{
+		free_scene_inits(scene, line, map);
+		error_handling(MALLOC_ERROR);
+	}
+	add_camera_to_scene(scene, camera);
 }
