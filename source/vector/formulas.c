@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:13:20 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 16:03:03 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:18:52 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_vector	compute_ray(t_camera *cam, double px, double py)
 	world_up = (t_vector){0, 1, 0};
 	if (fabs(cam->direction->x) < 1e-6 && fabs(cam->direction->z) < 1e-6)
 		world_up = (t_vector){0, 0, 1};
-	right = normalize(vector_cross(world_up, *(cam->direction)));
-	up = normalize(vector_cross(*(cam->direction), right));
+	right = normalize(vector_cross(*(cam->direction), world_up));
+	up = normalize(vector_cross(right, *(cam->direction)));
 	dir = vector_addition(vector_addition(*(cam->direction), vector_scale(right,
 					sx)), vector_scale(up, sy));
 	return (normalize(dir));

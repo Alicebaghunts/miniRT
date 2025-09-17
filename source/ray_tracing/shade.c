@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 19:50:25 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 21:15:43 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:14:58 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,41 +41,51 @@ double	intersect_cylinder_shadow(t_vector origin, t_vector dir,
 	return (-1.0);
 }
 
-static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector light_dir,
-		double light_dist)
+static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector normal,
+							 t_vector light_dir, double light_dist,
+							 t_object *ignore)
 {
-	t_list		*node;
-	t_object	*obj;
-	double		t;
+	t_list			*node;
+	t_object		*obj;
+	double			t;
+	t_vector		shadow_origin;
+	const double	epsilon = 5e-4;
 
+	shadow_origin = vector_addition(hit_point, vector_scale(normal, epsilon));
 	light_dir = normalize(light_dir);
 	node = scene->objects;
-	while (node)
+    while (node)
 	{
 		obj = (t_object *)node->content;
+        if (obj == ignore)
+        {
+            node = node->next;
+            continue;
+        }
 		if (obj->type == 's')
 		{
-			t = intersect_sphere_shadow(hit_point, light_dir,
+			t = intersect_sphere_shadow(shadow_origin, light_dir,
 					obj->data->sphere);
 			if (t > 1e-6 && t < light_dist)
 				return (1);
 		}
 		else if (obj->type == 'p')
 		{
-			t = intersect_plane_shadow(hit_point, light_dir, obj->data->plane);
+			t = intersect_plane_shadow(shadow_origin, light_dir,
+					obj->data->plane);
 			if (t > 1e-6 && t < light_dist)
 				return (1);
 		}
 		else if (obj->type == 'c')
 		{
-			t = intersect_cylinder_shadow(hit_point, light_dir,
+			t = intersect_cylinder_shadow(shadow_origin, light_dir,
 					obj->data->cylinder);
 			if (t > 1e-6 && t < light_dist)
 				return (1);
 		}
 		node = node->next;
 	}
-	return (0);
+    return (0);
 }
 
 t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
@@ -87,7 +97,13 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 	t_vector	light_dir;
 	double		light_dist;
 	double		diff;
+	double		spec;
+	const double	ks = 0.5;
+	const int		shininess = 64;
 	t_color		obj_color;
+	t_camera	*cam;
+	t_vector	view_dir;
+	t_vector	reflect_dir;
 
 	if (obj->type == 's')
 		obj_color = *(obj->data->sphere->color);
@@ -101,6 +117,9 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 			* scene->ambient->light_ratio);
 	result.blue = (int)(obj_color.blue * scene->ambient->color->blue / 255.0
 			* scene->ambient->light_ratio);
+
+	cam = (t_camera *)scene->camera->content;
+	view_dir = normalize(vector_sub(*(cam->position), hit_point));
 	l_node = scene->lights;
 	while (l_node)
 	{
@@ -108,15 +127,31 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 		light_dir = vector_sub(*(light->position), hit_point);
 		light_dist = vector_length(light_dir);
 		light_dir = normalize(light_dir);
-		if (!in_shadow(scene, hit_point, light_dir, light_dist))
+		diff = fmax(0.0, vector_dot(normal, light_dir));
+		if (diff > 0.0 &&
+			!in_shadow(scene, hit_point, normal, light_dir, light_dist, obj))
 		{
-			diff = fmax(0.0, vector_dot(normal, light_dir));
 			result.red += (int)(obj_color.red * light->color->red / 255.0
 					* light->brightness_ratio * diff);
 			result.green += (int)(obj_color.green * light->color->green / 255.0
 					* light->brightness_ratio * diff);
 			result.blue += (int)(obj_color.blue * light->color->blue / 255.0
 					* light->brightness_ratio * diff);
+
+			/* Phong specular highlight */
+			reflect_dir = vector_sub(vector_scale(normal,
+					2.0 * vector_dot(normal, light_dir)), light_dir);
+			reflect_dir = normalize(reflect_dir);
+			spec = pow(fmax(0.0, vector_dot(view_dir, reflect_dir)), shininess);
+			if (spec > 0.0)
+			{
+				result.red += (int)(light->color->red * ks
+						* light->brightness_ratio * spec);
+				result.green += (int)(light->color->green * ks
+						* light->brightness_ratio * spec);
+				result.blue += (int)(light->color->blue * ks
+						* light->brightness_ratio * spec);
+			}
 		}
 		l_node = l_node->next;
 	}
