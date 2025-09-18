@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 19:50:25 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/17 19:14:58 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/17 23:42:06 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 	double		light_dist;
 	double		diff;
 	double		spec;
-	const double	ks = 0.5;
+	const double	ks = 1;
 	const int		shininess = 64;
 	t_color		obj_color;
 	t_camera	*cam;
