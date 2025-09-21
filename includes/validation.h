@@ -6,16 +6,17 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:42 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 15:57:39 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/21 22:58:24 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VALIDATION_H
 # define VALIDATION_H
 
+# include "initialization.h"
 # include "libft.h"
 # include "mlx.h"
-# include "object_types.h"
+# include "vector.h"
 
 int			checking_argument(char *str);
 int			check_extension(char *path);

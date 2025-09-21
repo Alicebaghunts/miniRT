@@ -6,11 +6,11 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 18:31:04 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/02 19:22:46 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/21 22:58:45 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initialization.h"
+#include "vector.h"
 
 t_vector	vector_addition(t_vector a, t_vector b)
 {

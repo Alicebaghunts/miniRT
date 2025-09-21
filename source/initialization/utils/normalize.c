@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:23:03 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 18:47:47 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/21 23:20:05 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,29 @@ t_vector	cylinder_normal(t_cylinder *cyl, t_vector hit_point)
 	double		projection;
 	t_vector	closest_point_on_axis;
 	t_vector	normal;
+	// t_vector	top_center;
+	// double		radius;
 
 	base_to_hit.x = hit_point.x - cyl->position->x;
 	base_to_hit.y = hit_point.y - cyl->position->y;
 	base_to_hit.z = hit_point.z - cyl->position->z;
 	projection = base_to_hit.x * cyl->direction->x + base_to_hit.y
 		* cyl->direction->y + base_to_hit.z * cyl->direction->z;
+	
+	/* Check if hit point is on top cap */
+	if (projection >= cyl->height - 1e-6)
+		return (*(cyl->direction));
+	
+	/* Check if hit point is on bottom cap */
+	if (projection <= 1e-6)
+	{
+		normal.x = -cyl->direction->x;
+		normal.y = -cyl->direction->y;
+		normal.z = -cyl->direction->z;
+		return (normal);
+	}
+	
+	/* Side of cylinder */
 	closest_point_on_axis.x = cyl->position->x + cyl->direction->x * projection;
 	closest_point_on_axis.y = cyl->position->y + cyl->direction->y * projection;
 	closest_point_on_axis.z = cyl->position->z + cyl->direction->z * projection;

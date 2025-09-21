@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 20:09:28 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 20:53:54 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/21 23:09:57 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,4 @@ double	intersect_plane_shadow(t_vector origin, t_vector dir, t_plane *plane)
 		return (t);
 	return (-1.0);
 }
+

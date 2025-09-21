@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 19:50:25 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/17 23:42:06 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/22 00:06:45 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 	double		light_dist;
 	double		diff;
 	double		spec;
-	const double	ks = 1;
+	const double	ks = 1.0;
 	const int		shininess = 64;
 	t_color		obj_color;
 	t_camera	*cam;
@@ -117,7 +117,6 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 			* scene->ambient->light_ratio);
 	result.blue = (int)(obj_color.blue * scene->ambient->color->blue / 255.0
 			* scene->ambient->light_ratio);
-
 	cam = (t_camera *)scene->camera->content;
 	view_dir = normalize(vector_sub(*(cam->position), hit_point));
 	l_node = scene->lights;
@@ -137,8 +136,6 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 					* light->brightness_ratio * diff);
 			result.blue += (int)(obj_color.blue * light->color->blue / 255.0
 					* light->brightness_ratio * diff);
-
-			/* Phong specular highlight */
 			reflect_dir = vector_sub(vector_scale(normal,
 					2.0 * vector_dot(normal, light_dir)), light_dir);
 			reflect_dir = normalize(reflect_dir);

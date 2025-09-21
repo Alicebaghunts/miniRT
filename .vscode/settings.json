@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "rendering.h": "c"
+        "rendering.h": "c",
+        "validation.h": "c",
+        "vector.h": "c",
+        "__node_handle": "c"
     }
 }
