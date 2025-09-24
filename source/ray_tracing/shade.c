@@ -6,44 +6,15 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 19:50:25 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/22 00:06:45 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/24 21:41:24 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rendering.h"
-
-double	intersect_cylinder_shadow(t_vector origin, t_vector dir,
-		t_cylinder *cylinder)
-{
-	t_vector	oc;
-	double		radius;
-	double		a;
-	double		b;
-	double		c;
-	double		discriminant;
-	double		t1;
-	double		t2;
-
-	oc = vector_sub(origin, *(cylinder->position));
-	radius = cylinder->diameter / 2.0;
-	a = dir.x * dir.x + dir.y * dir.y;
-	b = 2.0 * (oc.x * dir.x + oc.y * dir.y);
-	c = oc.x * oc.x + oc.y * oc.y - radius * radius;
-	discriminant = b * b - 4.0 * a * c;
-	if (discriminant < 0)
-		return (-1.0);
-	t1 = (-b - sqrt(discriminant)) / (2.0 * a);
-	t2 = (-b + sqrt(discriminant)) / (2.0 * a);
-	if (t1 > 1e-6)
-		return (t1);
-	if (t2 > 1e-6)
-		return (t2);
-	return (-1.0);
-}
+#include "intersect.h"
 
 static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector normal,
-							 t_vector light_dir, double light_dist,
-							 t_object *ignore)
+		t_vector light_dir, double light_dist, t_object *ignore)
 {
 	t_list			*node;
 	t_object		*obj;
@@ -54,14 +25,14 @@ static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector normal,
 	shadow_origin = vector_addition(hit_point, vector_scale(normal, epsilon));
 	light_dir = normalize(light_dir);
 	node = scene->objects;
-    while (node)
+	while (node)
 	{
 		obj = (t_object *)node->content;
-        if (obj == ignore)
-        {
-            node = node->next;
-            continue;
-        }
+		if (obj == ignore)
+		{
+			node = node->next;
+			continue ;
+		}
 		if (obj->type == 's')
 		{
 			t = intersect_sphere_shadow(shadow_origin, light_dir,
@@ -85,25 +56,25 @@ static int	in_shadow(t_scene *scene, t_vector hit_point, t_vector normal,
 		}
 		node = node->next;
 	}
-    return (0);
+	return (0);
 }
 
 t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 		t_object *obj)
 {
-	t_color		result;
-	t_list		*l_node;
-	t_light		*light;
-	t_vector	light_dir;
-	double		light_dist;
-	double		diff;
-	double		spec;
+	t_color			result;
+	t_list			*l_node;
+	t_light			*light;
+	t_vector		light_dir;
+	double			light_dist;
+	double			diff;
+	double			spec;
 	const double	ks = 1.0;
 	const int		shininess = 64;
-	t_color		obj_color;
-	t_camera	*cam;
-	t_vector	view_dir;
-	t_vector	reflect_dir;
+	t_color			obj_color;
+	t_camera		*cam;
+	t_vector		view_dir;
+	t_vector		reflect_dir;
 
 	if (obj->type == 's')
 		obj_color = *(obj->data->sphere->color);
@@ -127,8 +98,8 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 		light_dist = vector_length(light_dir);
 		light_dir = normalize(light_dir);
 		diff = fmax(0.0, vector_dot(normal, light_dir));
-		if (diff > 0.0 &&
-			!in_shadow(scene, hit_point, normal, light_dir, light_dist, obj))
+		if (diff > 0.0 && !in_shadow(scene, hit_point, normal, light_dir,
+				light_dist, obj))
 		{
 			result.red += (int)(obj_color.red * light->color->red / 255.0
 					* light->brightness_ratio * diff);
@@ -136,8 +107,8 @@ t_color	shade(t_scene *scene, t_vector hit_point, t_vector normal,
 					* light->brightness_ratio * diff);
 			result.blue += (int)(obj_color.blue * light->color->blue / 255.0
 					* light->brightness_ratio * diff);
-			reflect_dir = vector_sub(vector_scale(normal,
-					2.0 * vector_dot(normal, light_dir)), light_dir);
+			reflect_dir = vector_sub(vector_scale(normal, 2.0
+						* vector_dot(normal, light_dir)), light_dir);
 			reflect_dir = normalize(reflect_dir);
 			spec = pow(fmax(0.0, vector_dot(view_dir, reflect_dir)), shininess);
 			if (spec > 0.0)

@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:05:03 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 16:18:01 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/24 21:29:17 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static t_vector	get_normal(t_object *obj, t_vector hit_point)
 		return (sphere_normal(obj->data->sphere, hit_point));
 	else if (obj->type == 'p')
 		return (*(obj->data->plane->normal));
-	else if (obj->type == 'c')
 		return (cylinder_normal(obj->data->cylinder, hit_point));
 	return ((t_vector){0, 1, 0});
 }

@@ -3,6 +3,8 @@
         "rendering.h": "c",
         "validation.h": "c",
         "vector.h": "c",
-        "__node_handle": "c"
+        "__node_handle": "c",
+        "float.h": "c",
+        "intersect.h": "c"
     }
 }
