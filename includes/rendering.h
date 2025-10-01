@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 18:12:05 by alisharu          #+#    #+#             */
-/*   Updated: 2025/10/01 14:55:41 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/01 21:59:32 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_roots
 	double		t2;
 	int			valid;
 }				t_roots;
-
 
 // the all shadow info
 typedef struct s_shade_info
