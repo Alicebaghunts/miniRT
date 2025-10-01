@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 22:53:28 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 16:12:53 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/27 17:54:28 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,9 @@ int	cmp_types_and_init(char **line, t_object *object)
 	return (0);
 }
 
-void	init_objects(t_scene *scene, char **line, char **map)
+static t_object	*create_object(t_scene *scene, char **line, char **map)
 {
 	t_object	*object;
-	t_list		*node;
 
 	object = ft_calloc(1, sizeof(t_object));
 	if (!object)
@@ -63,6 +62,15 @@ void	init_objects(t_scene *scene, char **line, char **map)
 		free_scene_inits(scene, line, map);
 		error_handling(MALLOC_ERROR);
 	}
+	return (object);
+}
+
+void	init_objects(t_scene *scene, char **line, char **map)
+{
+	t_object	*object;
+	t_list		*node;
+
+	object = create_object(scene, line, map);
 	node = ft_lstnew(object);
 	if (!node)
 	{

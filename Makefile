@@ -13,7 +13,7 @@ PARSE_DIR       = $(SRC_DIR)/parse
 GRAPHICS_DIR    = $(SRC_DIR)/graphics
 RAY_TRACING_DIR = $(SRC_DIR)/ray_tracing
 VECTOR_DIR      = $(SRC_DIR)/vector
-
+FORMULAS_DIR	= $(SRC_DIR)/formulas
 MINILIBX_DIR    = $(LIB_DIR)/minilibx_macos
 LIBFT_DIR       = $(LIB_DIR)/libft
 
@@ -30,7 +30,6 @@ SRCS = \
 	$(VALIDATION_DIR)/utils/checking_object.c \
 	$(VALIDATION_DIR)/utils/file_handler_utils.c \
 	$(VALIDATION_DIR)/utils/file_handler.c \
-	$(VALIDATION_DIR)/utils/print_scene.c \
 	$(INITIALIZATION_DIR)/initialization.c \
 	$(INITIALIZATION_DIR)/objects/init_ambient.c \
 	$(INITIALIZATION_DIR)/objects/init_camera.c \
@@ -41,14 +40,24 @@ SRCS = \
 	$(INITIALIZATION_DIR)/utils/free_objects.c \
 	$(INITIALIZATION_DIR)/utils/init_objects.c \
 	$(INITIALIZATION_DIR)/utils/normalize.c \
+	$(INITIALIZATION_DIR)/utils/normalize_utils.c \
 	$(INITIALIZATION_DIR)/objects/init_sphere.c \
-	$(VECTOR_DIR)/formulas.c \
-	$(VECTOR_DIR)/cylinder.c \
-	$(VECTOR_DIR)/plane.c \
-	$(VECTOR_DIR)/vector_formula.c \
 	$(RAY_TRACING_DIR)/shade.c \
 	$(RAY_TRACING_DIR)/drawing.c \
 	$(RAY_TRACING_DIR)/intersect.c \
+	$(RAY_TRACING_DIR)/ligthing.c \
+	$(RAY_TRACING_DIR)/ambient.c \
+	$(RAY_TRACING_DIR)/shadow.c \
+	$(RAY_TRACING_DIR)/object.c \
+	$(FORMULAS_DIR)/cylinder/cylinder_caps.c \
+	$(FORMULAS_DIR)/cylinder/cylinder_disk.c \
+	$(FORMULAS_DIR)/cylinder/cylinder_shadow.c \
+	$(FORMULAS_DIR)/cylinder/cylinder_side.c \
+	$(FORMULAS_DIR)/cylinder/cylinder_intersect.c \
+	$(FORMULAS_DIR)/plane/plane_intersect.c \
+	$(FORMULAS_DIR)/sphere/sphere_intersect.c \
+	$(FORMULAS_DIR)/vector/vector_formulas.c \
+	$(FORMULAS_DIR)/formulas.c \
 
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 

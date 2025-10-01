@@ -6,14 +6,66 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 18:12:05 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 18:37:56 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:55:41 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 # define RENDERING_H
-
 # include "initialization.h"
+# include "intersect.h"
+
+// ray info
+typedef struct s_rayinfo
+{
+	double		aspect;
+	double		scale;
+	double		sx;
+	double		sy;
+}				t_rayinfo;
+
+// roots
+typedef struct s_roots
+{
+	double		t1;
+	double		t2;
+	int			valid;
+}				t_roots;
+
+
+// the all shadow info
+typedef struct s_shade_info
+{
+	t_scene		*scene;
+	t_vector	hit_point;
+	t_vector	normal;
+	t_vector	view_dir;
+	t_object	*obj;
+	t_color		obj_color;
+	t_color		*result;
+}				t_shade_info;
+
+// shadow info
+typedef struct s_shadow_info
+{
+	t_scene		*scene;
+	t_vector	hit_point;
+	t_vector	normal;
+	t_vector	light_dir;
+	double		light_dist;
+	t_object	*ignore;
+}				t_shadow_info;
+
+// lighte info
+typedef struct s_light_info
+{
+	t_color		*result;
+	t_color		obj_color;
+	t_light		*light;
+	t_vector	normal;
+	t_vector	view_dir;
+	t_vector	hit_point;
+}				t_light_info;
 
 typedef struct s_mlx
 {
@@ -43,8 +95,6 @@ double			intersect_sphere(t_camera *camera, t_vector ray_dir,
 t_vector		compute_ray(t_camera *cam, double u, double v);
 double			intersect_plane(t_camera *camera, t_vector ray_dir,
 					t_plane *plane);
-double			intersect_cylinder(t_camera *camera, t_vector ray_dir,
-					t_cylinder *cylinder);
 t_color			shade(t_scene *scene, t_vector hit_point, t_vector normal,
 					t_object *obj);
 
@@ -53,4 +103,8 @@ double			intersect_sphere_shadow(t_vector ray_origin, t_vector ray_dir,
 
 double			intersect_plane_shadow(t_vector ray_origin, t_vector ray_dir,
 					t_plane *plane);
+int				in_shadow(t_shadow_info info);
+t_color			get_object_color(t_object *obj);
+t_color			compute_ambient(t_scene *scene, t_color obj_color);
+void			add_light_contribution_struct(t_light_info *info);
 #endif

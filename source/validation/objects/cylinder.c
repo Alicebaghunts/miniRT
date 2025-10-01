@@ -6,30 +6,12 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:15 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/21 22:58:37 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:17:36 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validation.h"
-
-double	intersect_disk(t_camera *cam, t_vector ray, t_vector center,
-		t_vector normal, double radius)
-{
-	double		denom;
-	double		t;
-	t_vector	p;
-
-	denom = vector_dot(normal, ray);
-	if (fabs(denom) < 1e-6)
-		return (INFINITY);
-	t = vector_dot(vector_sub(center, *(cam->position)), normal) / denom;
-	if (t < 0)
-		return (INFINITY);
-	p = vector_addition(*(cam->position), vector_scale(ray, t));
-	if (vector_length(vector_sub(p, center)) <= radius)
-		return (t);
-	return (INFINITY);
-}
+#include "rendering.h"
 
 static int	is_valid_cylinder(char **line)
 {

@@ -6,33 +6,39 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 20:09:28 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/21 23:09:57 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/09/27 17:59:00 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rendering.h"
 
-double	intersect_sphere_shadow(t_vector origin, t_vector dir, t_sphere *sphere)
+static t_quad	calc_sphere_quadratic(t_vector origin, t_vector dir,
+		t_sphere *sphere)
 {
+	t_quad		q;
 	t_vector	oc;
 	double		radius;
-	double		a;
-	double		b;
-	double		c;
-	double		discriminant;
-	double		t1;
-	double		t2;
 
 	oc = vector_sub(origin, *(sphere->position));
 	radius = sphere->diameter / 2.0;
-	a = vector_dot(dir, dir);
-	b = 2.0 * vector_dot(oc, dir);
-	c = vector_dot(oc, oc) - radius * radius;
-	discriminant = b * b - 4 * a * c;
-	if (discriminant < 0)
+	q.a = vector_dot(dir, dir);
+	q.b = 2.0 * vector_dot(oc, dir);
+	q.c = vector_dot(oc, oc) - radius * radius;
+	q.discriminant = q.b * q.b - 4 * q.a * q.c;
+	return (q);
+}
+
+double	intersect_sphere_shadow(t_vector origin, t_vector dir, t_sphere *sphere)
+{
+	t_quad	q;
+	double	t1;
+	double	t2;
+
+	q = calc_sphere_quadratic(origin, dir, sphere);
+	if (q.discriminant < 0)
 		return (-1.0);
-	t1 = (-b - sqrt(discriminant)) / (2.0 * a);
-	t2 = (-b + sqrt(discriminant)) / (2.0 * a);
+	t1 = (-q.b - sqrt(q.discriminant)) / (2.0 * q.a);
+	t2 = (-q.b + sqrt(q.discriminant)) / (2.0 * q.a);
 	if (t1 > 1e-10)
 		return (t1);
 	if (t2 > 1e-10)
@@ -54,4 +60,3 @@ double	intersect_plane_shadow(t_vector origin, t_vector dir, t_plane *plane)
 		return (t);
 	return (-1.0);
 }
-

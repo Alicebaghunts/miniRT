@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/21 22:55:25 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/27 17:27:52 by alisharu         ###   ########.fr       */
+/*   Created: 2025/09/27 18:19:13 by alisharu          #+#    #+#             */
+/*   Updated: 2025/09/27 18:24:41 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#include "rendering.h"
 
-# include "object_types.h"
-# include <math.h>
-
-t_vector	vector_addition(t_vector a, t_vector b);
-t_vector	vector_sub(t_vector a, t_vector b);
-t_vector	vector_scale(t_vector a, double s);
-t_vector	vector_cross(t_vector a, t_vector b);
-double		vector_dot(t_vector a, t_vector b);
-double		vector_length(t_vector v);
-
-#endif
+t_color	get_object_color(t_object *obj)
+{
+	if (obj->type == 's')
+		return (*(obj->data->sphere->color));
+	else if (obj->type == 'p')
+		return (*(obj->data->plane->color));
+	else
+		return (*(obj->data->cylinder->color));
+}

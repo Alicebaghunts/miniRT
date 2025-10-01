@@ -6,15 +6,15 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/21 23:01:13 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:06:41 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_TYPES_H
 # define OBJECT_TYPES_H
 # include "libft.h"
-# include <stdbool.h>
 # include <math.h>
+# include <stdbool.h>
 
 # define INVALID_ARGUMENT 1
 # define INVALID_PATH 2
@@ -22,8 +22,16 @@
 # define INVALID_MAP 4
 # define MALLOC_ERROR 5
 
-# define MLX_X 800 
+# define MLX_X 800
 # define MLX_Y 600
+
+typedef enum e_hit_type
+{
+	HIT_NONE,
+	HIT_CYLINDER_SIDE,
+	HIT_CYLINDER_TOP,
+	HIT_CYLINDER_BOTTOM
+}					t_hit_type;
 
 typedef struct s_valid_object
 {
