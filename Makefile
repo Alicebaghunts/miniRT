@@ -26,6 +26,7 @@ SRCS = \
 	$(VALIDATION_DIR)/objects/sphere.c \
 	$(VALIDATION_DIR)/objects/plane.c \
 	$(VALIDATION_DIR)/objects/cylinder.c \
+	$(VALIDATION_DIR)/objects/cone.c \
 	$(VALIDATION_DIR)/utils/checking_nums.c \
 	$(VALIDATION_DIR)/utils/checking_object.c \
 	$(VALIDATION_DIR)/utils/file_handler_utils.c \
@@ -36,6 +37,7 @@ SRCS = \
 	$(INITIALIZATION_DIR)/objects/init_light.c \
 	$(INITIALIZATION_DIR)/objects/init_cylinder.c \
 	$(INITIALIZATION_DIR)/objects/init_plane.c \
+	$(INITIALIZATION_DIR)/objects/init_cone.c \
 	$(INITIALIZATION_DIR)/utils/free_scene.c \
 	$(INITIALIZATION_DIR)/utils/free_objects.c \
 	$(INITIALIZATION_DIR)/utils/init_objects.c \
@@ -55,6 +57,7 @@ SRCS = \
 	$(FORMULAS_DIR)/cylinder/cylinder_side.c \
 	$(FORMULAS_DIR)/cylinder/cylinder_intersect.c \
 	$(FORMULAS_DIR)/plane/plane_intersect.c \
+	$(FORMULAS_DIR)/cone/cone_intersect.c \
 	$(FORMULAS_DIR)/sphere/sphere_intersect.c \
 	$(FORMULAS_DIR)/vector/vector_formulas.c \
 	$(FORMULAS_DIR)/formulas.c \

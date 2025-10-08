@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:42 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/21 22:58:24 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:19:43 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		validate_light(char **map, char **line);
 void		validate_sphere(char **map, char **line);
 void		validate_plane(char **map, char **line);
 void		validate_cylinder(char **map, char **line);
+void		validate_cone(char **map, char **line);
 
 // initalization
 void		normalize_vectors(t_scene *scene);

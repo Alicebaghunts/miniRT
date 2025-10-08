@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:05:03 by alisharu          #+#    #+#             */
-/*   Updated: 2025/10/01 14:42:38 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:05:44 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static double	get_intersection(t_object *obj, t_camera *cam, t_vector ray_dir)
 		return (intersect_sphere(cam, ray_dir, obj->data->sphere));
 	else if (obj && obj->type == 'p' && obj->data && obj->data->plane)
 		return (intersect_plane(cam, ray_dir, obj->data->plane));
+	else if (obj && obj->type == 'o' && obj->data && obj->data->cone)
+		return (intersect_cone(cam, ray_dir, obj->data->cone));
 	else if (obj && obj->type == 'c' && obj->data && obj->data->cylinder)
 	{
 		data.cam = cam;
@@ -37,6 +39,8 @@ static t_vector	get_normal(t_object *obj, t_vector hit_point)
 		return (sphere_normal(obj->data->sphere, hit_point));
 	else if (obj->type == 'p')
 		return (*(obj->data->plane->normal));
+	else if (obj->type == 'o')
+		return (cone_normal(obj->data->cone, hit_point));
 	return (cylinder_normal(obj->data->cylinder, hit_point));
 	return ((t_vector){0, 1, 0});
 }
@@ -80,8 +84,7 @@ static void	draw_pixel(t_mlx *app, t_camera *cam, int x, int y)
 					hit.min_t));
 		hit.normal = get_normal(hit.closest, hit.hit_point);
 		hit.shaded = shade(app->scene, hit.hit_point, hit.normal, hit.closest);
-		rgb = (hit.shaded.red << 16) | (hit.shaded.green << 8)
-			| hit.shaded.blue;
+		rgb = (hit.shaded.red << 16) | (hit.shaded.green << 8) | hit.shaded.blue;
 		mlx_pixel_put(app->mlx, app->window, x, y, rgb);
 	}
 	else

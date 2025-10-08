@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:30:19 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/25 19:06:58 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:31:13 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void		free_object(void *content);
 void		free_scene_inits(t_scene *scene, char **line, char **map);
 void		init_objects(t_scene *scene, char **line, char **map);
 int			cmp_types_and_init(char **line, t_object *object);
-
+t_cone		*init_cone(char **line);
 #endif

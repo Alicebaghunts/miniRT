@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 22:53:28 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/27 17:54:28 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:30:44 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int	cmp_types_and_init(char **line, t_object *object)
 		object->type = 'c';
 		object->data->cylinder = init_cylinder(line);
 		if (object->data->cylinder == NULL)
+			return (1);
+	}
+	else if (ft_strncmp(line[0], "co", 2) == 0)
+	{
+		object->type = 'o'; 
+		object->data->cone = init_cone(line);
+		if (object->data->cone == NULL)
 			return (1);
 	}
 	return (0);

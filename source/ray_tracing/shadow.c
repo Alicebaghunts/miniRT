@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 18:17:47 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/27 18:24:14 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:06:11 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	check_shadow_hit(t_object *obj, t_vector origin, t_vector dir,
 		t = intersect_plane_shadow(origin, dir, obj->data->plane);
 	else if (obj->type == 'c')
 		t = intersect_cylinder_shadow(origin, dir, obj->data->cylinder);
+	else if (obj->type == 'o')
+		t = intersect_cone_shadow(origin, dir, obj->data->cone);
 	else
 		return (0);
 	return (t > 1e-6 && t < light_dist);

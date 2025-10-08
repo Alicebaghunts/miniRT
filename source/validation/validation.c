@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:43 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 14:53:14 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:18:29 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	validate_map_line(char **map, char **line)
 		validate_plane(map, line);
 	else if (ft_strcmp(line[0], "cy") == 0)
 		validate_cylinder(map, line);
+	else if (ft_strcmp(line[0], "co") == 0)
+		validate_cone(map, line);
 	else
 	{
 		ft_putstr_fd("Unknown identifier: ", 2);

@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/10/01 14:06:41 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:09:47 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,19 +97,6 @@ typedef struct s_cylinder
 	double			height;
 }					t_cylinder;
 
-typedef union u_object_data
-{
-	t_sphere		*sphere;
-	t_plane			*plane;
-	t_cylinder		*cylinder;
-}					t_object_data;
-
-typedef struct s_object
-{
-	char			type;
-	t_object_data	*data;
-}					t_object;
-
 typedef struct s_scene
 {
 	t_ambient		*ambient;
@@ -117,5 +104,28 @@ typedef struct s_scene
 	t_list			*lights;
 	t_list			*objects;
 }					t_scene;
+
+typedef struct s_cone
+{
+	t_vector	*apex;
+	t_vector	*axis;
+	double		angle;
+	double		height;
+	t_color		*color;
+}	t_cone;
+
+typedef union u_object_data
+{
+	t_sphere		*sphere;
+	t_plane			*plane;
+	t_cylinder		*cylinder;
+	t_cone			*cone;
+}					t_object_data;
+
+typedef struct s_object
+{
+	char			type;
+	t_object_data	*data;
+}					t_object;
 
 #endif
