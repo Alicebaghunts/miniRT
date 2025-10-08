@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 13:44:36 by alisharu          #+#    #+#             */
-/*   Updated: 2025/10/08 23:59:57 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/09 00:30:36 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,22 @@ double	intersect_cone(t_camera *cam, t_vector dir, t_cone *cone)
 		best_t = t2;
 	return (best_t);
 }
-
 t_vector	cone_normal(t_cone *cone, t_vector hit_point)
 {
 	t_vector	v;
 	t_vector	co;
-	double		c2;
+	double		k;
+	double		cos_a;
 	t_vector	n;
 
 	v = normalize(*(cone->axis));
 	co = vector_sub(hit_point, *(cone->apex));
-	c2 = cos(cone->angle);
-	c2 = c2 * c2;
-	n = vector_sub(vector_scale(v, vector_dot(co, v)), vector_scale(co, c2));
-	return (normalize(n));
+	cos_a = cos(cone->angle);
+	k = vector_dot(co, v);
+	n = vector_sub(vector_scale(co, cos_a * cos_a), vector_scale(v, k * (1
+					+ cos_a * cos_a)));
+	n = normalize(n);
+	if (vector_dot(n, v) > 0)
+		n = vector_scale(n, -1);
+	return (n);
 }
