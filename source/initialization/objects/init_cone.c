@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:21:37 by alisharu          #+#    #+#             */
-/*   Updated: 2025/10/08 14:28:08 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/10/08 23:30:36 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ t_cone	*init_cone(char **line)
 			free(cone), NULL);
 	cone->angle = ft_atof(line[3]) * M_PI / 180.0;
 	cone->height = ft_atof(line[4]);
+	if (cone->height < 0)
+	{
+		*(cone->axis) = vector_scale(*(cone->axis), -1);
+		cone->height = -cone->height;
+	}
+	*(cone->axis) = normalize(vector_scale(*(cone->axis), -1));
 	ft_free_matrix(pos);
 	ft_free_matrix(axis);
 	ft_free_matrix(col);
