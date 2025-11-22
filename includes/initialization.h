@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 19:30:19 by alisharu          #+#    #+#             */
-/*   Updated: 2025/11/20 14:56:56 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:21:45 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ void		free_light(void *content);
 void		free_object(void *content);
 void		free_cone(t_cone *cone);
 void		free_camera(void *content);
+void		free_cylinder(t_cylinder *cylinder);
+void		free_plane(t_plane *plane);
 void		free_scene_inits(t_scene *scene, char **line, char **map);
 void		init_objects(t_scene *scene, char **line, char **map);
+t_texture	*init_texture(char *path);
 int			cmp_types_and_init(char **line, t_object *object);
 t_cone		*init_cone(char **line);
 #endif

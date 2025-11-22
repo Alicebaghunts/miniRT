@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 21:31:59 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 16:10:45 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:57:59 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,11 @@ t_cylinder	*init_cylinder(char **line)
 	ft_free_matrix(pos);
 	ft_free_matrix(dir);
 	ft_free_matrix(col);
+	if (line[6])
+	{
+		cylinder->texture = init_texture(line[6]);
+		if (!cylinder->texture)
+			return (free_cylinder(cylinder), NULL);
+	}
 	return (cylinder);
 }

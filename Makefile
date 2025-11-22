@@ -36,6 +36,7 @@ SRCS = \
 	$(INITIALIZATION_DIR)/objects/init_camera.c \
 	$(INITIALIZATION_DIR)/objects/init_light.c \
 	$(INITIALIZATION_DIR)/objects/init_cylinder.c \
+	$(INITIALIZATION_DIR)/objects/init_sphere.c \
 	$(INITIALIZATION_DIR)/objects/init_plane.c \
 	$(INITIALIZATION_DIR)/objects/init_cone.c \
 	$(INITIALIZATION_DIR)/utils/free_scene.c \
@@ -43,7 +44,7 @@ SRCS = \
 	$(INITIALIZATION_DIR)/utils/init_objects.c \
 	$(INITIALIZATION_DIR)/utils/normalize.c \
 	$(INITIALIZATION_DIR)/utils/normalize_utils.c \
-	$(INITIALIZATION_DIR)/objects/init_sphere.c \
+	$(INITIALIZATION_DIR)/utils/init_texture.c \
 	$(RAY_TRACING_DIR)/shade.c \
 	$(RAY_TRACING_DIR)/drawing.c \
 	$(RAY_TRACING_DIR)/intersect.c \

@@ -6,22 +6,25 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:15 by alisharu          #+#    #+#             */
-/*   Updated: 2025/11/22 17:24:50 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:50:00 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validation.h"
 #include "rendering.h"
+#include "validation.h"
 
 static int	is_valid_cylinder(char **line)
 {
+	int	len;
+
 	if (!line || ft_strcmp(line[0], "cy") != 0)
 		return (0);
-	if (!line[1] || !line[2] || !line[3] || !line[4] || !line[5])
+	len = 0;
+	while (line[len])
+		len++;
+	if (len < 6 || len > 7)
 		return (0);
-	if (line[7])
-		return (0);
-	if (line[6] && !ft_is_valid_xpm_path(line[6]))
+	if (len == 7 && !ft_is_valid_xpm_path(line[6]))
 		return (0);
 	if (!is_valid_position_vector(line[1]))
 		return (0);

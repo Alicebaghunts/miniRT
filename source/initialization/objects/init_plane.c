@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 00:34:49 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 16:08:44 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:56:31 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,11 @@ t_plane	*init_plane(char **line)
 	ft_free_matrix(pos);
 	ft_free_matrix(norm);
 	ft_free_matrix(col);
+	if (line[4])
+	{
+		plane->texture = init_texture(line[4]);
+		if (!plane->texture)
+			return (free_plane(plane), NULL);
+	}
 	return (plane);
 }

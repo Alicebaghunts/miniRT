@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:54 by alisharu          #+#    #+#             */
-/*   Updated: 2025/11/22 17:24:18 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:49:21 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 static int	is_valid_plane(char **line)
 {
+	int	len;
+
 	if (!line || ft_strcmp(line[0], "pl") != 0)
 		return (0);
-	if (!line[1] || !line[2] || !line[3])
+	len = 0;
+	while (line[len])
+		len++;
+	if (len < 4 || len > 5)
 		return (0);
-	if (line[5])
-		return (0);
-	if (line[4] && !ft_is_valid_xpm_path(line[4]))
+	if (len == 5 && !ft_is_valid_xpm_path(line[4]))
 		return (0);
 	if (!is_valid_position_vector(line[1]))
 		return (0);

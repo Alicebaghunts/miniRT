@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:49 by alisharu          #+#    #+#             */
-/*   Updated: 2025/11/22 17:23:39 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 19:13:07 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 static int	is_valid_sphere(char **line)
 {
+	int	len;
+
 	if (!line || ft_strcmp(line[0], "sp") != 0)
 		return (0);
-	if (!line[1] || !line[2] || !line[3])
+	len = 0;
+	while (line[len])
+		len++;
+	if (len < 4 || len > 6)
 		return (0);
-	if (line[5])
+	if (len >= 5 && !ft_is_valid_xpm_format(line[4]))
 		return (0);
-	if (line[4] && !ft_is_valid_xpm_path(line[4]))
+	if (len == 6 && !ft_is_valid_xpm_format(line[5]))
 		return (0);
 	if (!is_valid_position_vector(line[1]))
 		return (0);

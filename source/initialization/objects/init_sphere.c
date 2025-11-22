@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 21:32:12 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 09:28:47 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:53:45 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,13 @@ t_sphere	*init_sphere(char **line)
 	sphere->diameter = ft_atof(line[2]);
 	ft_free_matrix(pos);
 	ft_free_matrix(col);
+	if (line[4] && ft_strlen(line[4]) > 0)
+	{
+		sphere->texture = ft_calloc(1, sizeof(t_texture));
+		if (!sphere->texture)
+			return (free(sphere), NULL);
+		sphere->texture->path = ft_strdup(line[4]);
+		sphere->texture->img = NULL;
+	}
 	return (sphere);
 }

@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:31:40 by alisharu          #+#    #+#             */
-/*   Updated: 2025/11/20 16:11:00 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:16:25 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	free_sphere(t_sphere *sphere)
 		free(sphere->position);
 	if (sphere->color)
 		free(sphere->color);
+	if (sphere->texture)
+	{
+		if (sphere->texture->path)
+			free(sphere->texture->path);
+		free(sphere->texture);
+	}
 	free(sphere);
 }
 
@@ -33,6 +39,12 @@ void	free_plane(t_plane *plane)
 		free(plane->normal);
 	if (plane->color)
 		free(plane->color);
+	if (plane->texture)
+	{
+		if (plane->texture->path)
+			free(plane->texture->path);
+		free(plane->texture);
+	}
 	free(plane);
 }
 
@@ -46,6 +58,12 @@ void	free_cylinder(t_cylinder *cylinder)
 		free(cylinder->direction);
 	if (cylinder->color)
 		free(cylinder->color);
+	if (cylinder->texture)
+	{
+		if (cylinder->texture->path)
+			free(cylinder->texture->path);
+		free(cylinder->texture);
+	}
 	free(cylinder);
 }
 
@@ -59,8 +77,15 @@ void	free_cone(t_cone *cone)
 		free(cone->axis);
 	if (cone->color)
 		free(cone->color);
+	if (cone->texture)
+	{
+		if (cone->texture->path)
+			free(cone->texture->path);
+		free(cone->texture);
+	}
 	free(cone);
 }
+
 
 void	free_light(void *content)
 {
@@ -74,6 +99,20 @@ void	free_light(void *content)
 	if (light->color)
 		free(light->color);
 	free(light);
+}
+
+void	free_camera(void *content)
+{
+	t_camera	*camera;
+
+	camera = (t_camera *)content;
+	if (!camera)
+		return ;
+	if (camera->position)
+		free(camera->position);
+	if (camera->direction)
+		free(camera->direction);
+	free(camera);
 }
 
 void	free_object(void *content)
@@ -96,18 +135,4 @@ void	free_object(void *content)
 		free(object->data);
 	}
 	free(object);
-}
-
-void	free_camera(void *content)
-{
-	t_camera	*camera;
-
-	camera = (t_camera *)content;
-	if (!camera)
-		return ;
-	if (camera->position)
-		free(camera->position);
-	if (camera->direction)
-		free(camera->direction);
-	free(camera);
 }
