@@ -6,11 +6,44 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:32 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/16 18:41:42 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:09:55 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rendering.h"
+
+#ifdef __APPLE__
+# define KEY_ESC 53
+#else
+# define KEY_ESC 65307
+#endif
+
+static void	destroy_app(t_mlx *app)
+{
+	if (!app)
+		return ;
+	if (app->window && app->mlx)
+		mlx_destroy_window(app->mlx, app->window);
+	if (app->scene)
+		free_scene(app->scene);
+	if (app->mlx)
+		free(app->mlx);
+	free(app);
+}
+
+static int	close_window(t_mlx *app)
+{
+	destroy_app(app);
+	exit(0);
+	return (0);
+}
+
+static int	key_hook(int keycode, t_mlx *app)
+{
+	if (keycode == KEY_ESC)
+		close_window(app);
+	return (0);
+}
 
 void	error_handling(int num)
 {
@@ -64,10 +97,14 @@ int	main(int argc, char **argv)
 	map_array = read_in_map_file(fd);
 	validate_map(map_array);
 	scene = initialize_scene(map_array);
+	ft_free_matrix(map_array);
 	normalize_vectors(scene);
 	app = mlx_init_scene(scene, MLX_X, MLX_Y, "miniRT");
 	if (!app)
-		return (1);
+		return (free_scene(scene), 1);
 	drawing(app);
+	mlx_key_hook(app->window, key_hook, app);
+	mlx_hook(app->window, 17, 0, close_window, app);
 	mlx_loop(app->mlx);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:48 by alisharu          #+#    #+#             */
-/*   Updated: 2025/10/08 14:09:47 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:21:55 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ typedef enum e_hit_type
 	HIT_CYLINDER_TOP,
 	HIT_CYLINDER_BOTTOM
 }					t_hit_type;
+
+typedef struct s_texture
+{
+	char			*path;
+	void			*img;
+	char			*addr;
+	int				width;
+	int				height;
+}					t_texture;
 
 typedef struct s_valid_object
 {
@@ -79,6 +88,7 @@ typedef struct s_sphere
 	t_vector		*position;
 	double			diameter;
 	t_color			*color;
+	t_texture		*texture;
 }					t_sphere;
 
 typedef struct s_plane
@@ -86,6 +96,7 @@ typedef struct s_plane
 	t_vector		*position;
 	t_vector		*normal;
 	t_color			*color;
+	t_texture		*texture;
 }					t_plane;
 
 typedef struct s_cylinder
@@ -95,6 +106,7 @@ typedef struct s_cylinder
 	t_color			*color;
 	double			diameter;
 	double			height;
+	t_texture		*texture;
 }					t_cylinder;
 
 typedef struct s_scene
@@ -107,12 +119,13 @@ typedef struct s_scene
 
 typedef struct s_cone
 {
-	t_vector	*apex;
-	t_vector	*axis;
-	double		angle;
-	double		height;
-	t_color		*color;
-}	t_cone;
+	t_vector		*apex;
+	t_vector		*axis;
+	double			angle;
+	double			height;
+	t_color			*color;
+	t_texture		*texture;
+}					t_cone;
 
 typedef union u_object_data
 {

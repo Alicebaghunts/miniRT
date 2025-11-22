@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 09:31:40 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 16:11:15 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/20 16:11:00 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ void	free_cylinder(t_cylinder *cylinder)
 	free(cylinder);
 }
 
+void	free_cone(t_cone *cone)
+{
+	if (!cone)
+		return ;
+	if (cone->apex)
+		free(cone->apex);
+	if (cone->axis)
+		free(cone->axis);
+	if (cone->color)
+		free(cone->color);
+	free(cone);
+}
+
 void	free_light(void *content)
 {
 	t_light	*light;
@@ -78,7 +91,23 @@ void	free_object(void *content)
 			free_sphere(object->data->sphere);
 		else if (object->type == 'p')
 			free_plane(object->data->plane);
+		else if (object->type == 'o')
+			free_cone(object->data->cone);
 		free(object->data);
 	}
 	free(object);
+}
+
+void	free_camera(void *content)
+{
+	t_camera	*camera;
+
+	camera = (t_camera *)content;
+	if (!camera)
+		return ;
+	if (camera->position)
+		free(camera->position);
+	if (camera->direction)
+		free(camera->direction);
+	free(camera);
 }

@@ -6,11 +6,32 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:33:43 by alisharu          #+#    #+#             */
-/*   Updated: 2025/10/08 14:18:29 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:17:41 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validation.h"
+#include <fcntl.h>
+#include <unistd.h>
+
+int	ft_is_valid_xpm_path(char *path)
+{
+	int		len;
+	int		fd;
+
+	if (!path)
+		return (0);
+	len = ft_strlen(path);
+	if (len < 4)
+		return (0);
+	if (ft_strcmp(path + len - 4, ".xpm") != 0)
+		return (0);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	close(fd);
+	return (1);
+}
 
 void	validate_map_line(char **map, char **line)
 {

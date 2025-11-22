@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:34:15 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/29 17:17:36 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:24:50 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ static int	is_valid_cylinder(char **line)
 {
 	if (!line || ft_strcmp(line[0], "cy") != 0)
 		return (0);
-	if (!line[1] || !line[2] || !line[3] || !line[4] || !line[5] || line[6])
+	if (!line[1] || !line[2] || !line[3] || !line[4] || !line[5])
+		return (0);
+	if (line[7])
+		return (0);
+	if (line[6] && !ft_is_valid_xpm_path(line[6]))
 		return (0);
 	if (!is_valid_position_vector(line[1]))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: alisharu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 23:40:49 by alisharu          #+#    #+#             */
-/*   Updated: 2025/09/01 09:31:03 by alisharu         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:56:52 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void	free_scene(t_scene *scene)
 			free(scene->ambient->color);
 		free(scene->ambient);
 	}
-	if (scene->camera)
-		free(scene->camera);
+	ft_lstclear(&scene->camera, free_camera);
 	ft_lstclear(&scene->lights, free_light);
 	ft_lstclear(&scene->objects, free_object);
 	free(scene);
